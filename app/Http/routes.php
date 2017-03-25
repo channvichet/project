@@ -17,4 +17,7 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/admin', 'DashboardController@index');
+Route::group(['middleware'=>'auth'], function(){
+	Route::get('/admin/slideshow','SlideshowController@listSlideshows');
+});
